@@ -11,8 +11,3 @@ public class Channel
     public string ChannelName { get; set; }
     public bool IsAdult { get; set; }
 }
-
-public class ChannelRequest
-{
-    public string ChannelName { get; set; }
-}
