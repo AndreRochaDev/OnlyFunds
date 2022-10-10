@@ -1,11 +1,15 @@
-﻿using OnlyFunds._1___Models.Domain;
+﻿using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
+using OnlyFunds._1___Models.Domain;
 using OnlyFunds._1___Models.Responses;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace OnlyFunds.Services;
 
 public interface IChannelsService
 {
     // Apenas tem estes requests/responses como parametros para ser mais rapida a apresentação
+    // Mapster
     Task<Channel> CreateChannel(Channel channel);
     Task<GetChannelsResponse> GetChannels();
 }
@@ -13,7 +17,13 @@ public interface IChannelsService
 public class ChannelsService : IChannelsService
 {
     private List<Channel> _channels = new();
-    
+    private readonly ILogger<ChannelsService> _logger;
+
+    public ChannelsService(ILogger<ChannelsService> logger)
+    {
+        _logger = logger;
+    }
+
     public async Task<Channel> CreateChannel(Channel channel)
     {
         _channels.Add(channel);

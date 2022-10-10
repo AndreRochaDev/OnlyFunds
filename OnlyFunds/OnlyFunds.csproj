@@ -8,6 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="Castle.Core" Version="5.1.0" />
       <PackageReference Include="FastEndpoints" Version="5.1.0" />
       <PackageReference Include="FastEndpoints.ClientGen" Version="5.1.0" />
       <PackageReference Include="FastEndpoints.Swagger" Version="5.1.0" />
