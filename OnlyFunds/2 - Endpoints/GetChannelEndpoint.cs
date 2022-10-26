@@ -1,4 +1,6 @@
 ﻿using OnlyFunds._1___Models.Requests;
+using OnlyFunds.Perfis.Attributes;
+using OnlyFunds.Perfis.Models;
 using OnlyFunds.Services;
 
 namespace OnlyFunds._2___Endpoints;
@@ -18,6 +20,7 @@ public class GetChannelEndpoint : Endpoint<GetChannelRequest>
         AllowAnonymous();
     }
     
+    [ProfileGuardForSystemActionFilter(SystemAction.LerEntidades)]
     public override async Task HandleAsync(GetChannelRequest req, CancellationToken ct)
     {
         var channel = await _channelsService.GetChannel(req.ChannelName);

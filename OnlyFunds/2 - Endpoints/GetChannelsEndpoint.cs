@@ -1,4 +1,6 @@
 ﻿using OnlyFunds._1___Models.Responses;
+using OnlyFunds.Perfis.Models;
+using OnlyFunds.Perfis.PreProcessor;
 using OnlyFunds.Services;
 
 namespace OnlyFunds._2___Endpoints;
@@ -15,7 +17,9 @@ public class GetChannelsEndpoint : EndpointWithoutRequest<GetChannelsResponse>
     public override void Configure()
     {
         Get("/api/channels");
-        ResponseCache(20);
+        //ResponseCache(20);
+        //PreProcessors(new UserProfilePreProcessor<EmptyRequest>(1, SystemAction.LerEntidades));
+        PreProcessors(new UserProfilePreProcessor<EmptyRequest>(2, SystemAction.ApagarEntidades));
         AllowAnonymous();
     }
 
