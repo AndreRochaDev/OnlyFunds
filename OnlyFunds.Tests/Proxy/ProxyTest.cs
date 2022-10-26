@@ -1,9 +1,6 @@
 ﻿using Castle.DynamicProxy;
 using FluentAssertions;
-using Newtonsoft.Json;
-using OnlyFunds._1___Models.Domain;
 using OnlyFunds.Proxy;
-using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace OnlyFunds.Tests.Proxy;
 
