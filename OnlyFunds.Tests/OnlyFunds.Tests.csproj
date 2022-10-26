@@ -22,7 +22,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="2 - Endpoints" />
+      <ProjectReference Include="..\OnlyFunds\OnlyFunds.csproj" />
     </ItemGroup>
 
 </Project>

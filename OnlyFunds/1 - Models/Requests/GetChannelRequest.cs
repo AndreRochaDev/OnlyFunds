@@ -2,5 +2,5 @@
 
 public class GetChannelRequest
 {
-    
+    public string ChannelName { get; set; }
 }

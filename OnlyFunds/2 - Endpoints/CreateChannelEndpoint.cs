@@ -23,6 +23,9 @@ public class CreateChannelEndpoint : Endpoint<CreateChannelRequest, CreateChanne
     public override async Task HandleAsync(CreateChannelRequest req, CancellationToken ct)
     {
         var createChannel = await _channelsService.CreateChannel(Map.ToEntity(req));
-        await SendAsync(Map.FromEntity(createChannel), cancellation: ct);
+        await SendCreatedAtAsync<GetChannelEndpoint>(new 
+            { createChannel.ChannelName }, 
+            Map.FromEntity(createChannel), 
+            cancellation: ct);
     }
 }

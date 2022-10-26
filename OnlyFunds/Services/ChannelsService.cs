@@ -8,6 +8,7 @@ public interface IChannelsService
     // Apenas tem estes requests/responses como parametros para ser mais rapida a apresentação
     Task<Channel> CreateChannel(Channel channel);
     Task<GetChannelsResponse> GetChannels();
+    Task<Channel> GetChannel(string channelName);
 }
 
 public class ChannelsService : IChannelsService
@@ -24,5 +25,10 @@ public class ChannelsService : IChannelsService
     public async Task<GetChannelsResponse> GetChannels()
     {
         return new GetChannelsResponse { Channels = _channels };
+    }
+
+    public async Task<Channel?> GetChannel(string channelName)
+    {
+        return _channels.FirstOrDefault(c => c.ChannelName == channelName);
     }
 }

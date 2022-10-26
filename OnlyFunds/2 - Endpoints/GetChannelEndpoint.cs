@@ -1,6 +1,26 @@
-﻿namespace OnlyFunds._2___Endpoints;
+﻿using OnlyFunds._1___Models.Requests;
+using OnlyFunds.Services;
 
-public class GetChannelEndpoint
+namespace OnlyFunds._2___Endpoints;
+
+public class GetChannelEndpoint : Endpoint<GetChannelRequest>
 {
+    private readonly IChannelsService _channelsService;
+
+    public GetChannelEndpoint(IChannelsService channelsService)
+    {
+        _channelsService = channelsService ?? throw new ArgumentNullException(nameof(channelsService));
+    }
     
+    public override void Configure()
+    {
+        Get("/api/channel/{ChannelName}");
+        AllowAnonymous();
+    }
+    
+    public override async Task HandleAsync(GetChannelRequest req, CancellationToken ct)
+    {
+        var channel = await _channelsService.GetChannel(req.ChannelName);
+        await SendOkAsync(channel, ct);
+    }
 }
